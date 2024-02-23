@@ -6,7 +6,6 @@ public class MinotaursBirthday {
 
     static int N = 15; // guests or threads at the party
 
-    static int[] eatenCupcakesStandOnLeft = new int[N];
     private static boolean[] cupcakesEaten = new boolean[N];
     static int cupcakesServed = 0;
 
@@ -26,7 +25,6 @@ public class MinotaursBirthday {
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -41,9 +39,12 @@ public class MinotaursBirthday {
         
         lock.lock(); // only one at a time
 
-        System.out.println("thread" + threadNumber + "entering");
+       // System.out.println("thread" + threadNumber + "entering");
+
         try {
+            //if you have not eaten a cupcake yet and there is one there
             if (cupcake && (cupcakesEaten[threadNumber-1] == false)) {
+
                 // eat the cupcake //cupcake = false;
                 eatCupcake(threadNumber);
                 cupcake = false;
@@ -51,8 +52,11 @@ public class MinotaursBirthday {
             } else {
                 // request cupcake
                 cupcake = true;
+
+                //if you have not already eaten a cupcake
                 if(cupcakesEaten[threadNumber-1] == false){
-                // eat cupcake
+
+                    // eat cupcake
                     eatCupcake(threadNumber);
                     cupcake = false;
                 }
@@ -61,14 +65,14 @@ public class MinotaursBirthday {
                 }
             }
         } finally {
+
             lock.unlock();
-            System.out.println("thread" + threadNumber + "exiting");
+            //System.out.println("thread" + threadNumber + "exiting");
 
         }
     }
     public static void eatCupcake(int threadNumber) {
-        eatenCupcakesStandOnLeft[threadNumber-1] = threadNumber;
-        cupcakesEaten[threadNumber-1] = true;
-        cupcakesServed++;
+        cupcakesEaten[threadNumber-1] = true; //guest notes that they have now eaten a cupcake
+        cupcakesServed++; //the number of cupcakes the servant has brought increases by 1
     }
 }
