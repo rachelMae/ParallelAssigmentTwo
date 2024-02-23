@@ -8,6 +8,8 @@
    I used a lock to ensure only one guest at a time could enter the labyrinth. I used a reentrant lock.
 
    This program is one file as labeled and can be run on the command line as typical for java or from an IDE set up for java. Java must be installed on your device either way.
+
+   You can uncomment the print statements I left in to better follow the code and see how it works.
    
 2.. Vase
    1. Method 1: Having guests randomly stop by would allow them to have more free time for the guests(threads) to do other things but they would waste time by coming by to check and not finding the room available.
@@ -16,4 +18,7 @@
    3. Method 3: I prefer and will implement this idea because it is the most fair and ordered. While the guests will have less freedom, they will choose when to enter the queue and will know exactly when to expect to be let in.
 
 I chose and used the 3rd option with a FIFO queue to keep track of which guests decide to wait to view the vase. Once they are at the top of the queue and called to view the showroom a lock is used to ensure only one at a time can enter the showroom code.
-      
+
+ This program is one file as labeled and can be run on the command line as typical for java or from an IDE set up for java. Java must be installed on your device either way.
+
+You can uncomment the print statements I left in to better follow the code and see how it works.
